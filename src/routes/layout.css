@@ -1,2 +1,99 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/forms';
+
+@font-face {
+	font-family: 'Metropolis';
+	src: url('/fonts/metropolis-regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Metropolis';
+	src: url('/fonts/metropolis-semibold.woff2') format('woff2');
+	font-weight: 600;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Metropolis';
+	src: url('/fonts/metropolis-bold.woff2') format('woff2');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Squanova';
+	src: url('/fonts/squanova-regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: optional;
+}
+
+@theme {
+	/* Backgrounds (burgundy-tinged darks) */
+	--color-background: oklch(0.14 0.04 360);
+	--color-foreground: oklch(0.96 0.01 40);
+
+	/* Cards & surfaces */
+	--color-card: oklch(0.18 0.04 360);
+	--color-card-foreground: oklch(0.96 0.01 40);
+
+	/* Primary: warm coral (CTA color) */
+	--color-primary: oklch(0.65 0.16 35);
+	--color-primary-foreground: oklch(1 0 0);
+
+	/* Highlight: crimson (sparingly) */
+	--color-highlight: oklch(0.55 0.24 27);
+	--color-highlight-foreground: oklch(1 0 0);
+
+	/* Secondary: peach */
+	--color-secondary: oklch(0.84 0.07 55);
+	--color-secondary-foreground: oklch(0.14 0.04 360);
+
+	/* Muted */
+	--color-muted: oklch(0.2 0.03 355);
+	--color-muted-foreground: oklch(0.65 0.02 20);
+
+	/* Borders & inputs */
+	--color-border: oklch(0.26 0.03 355);
+	--color-input: oklch(0.26 0.03 355);
+	--color-ring: oklch(0.65 0.16 35);
+
+	/* Section alternates */
+	--color-section-blush: oklch(0.95 0.02 15);
+	--color-section-peach: oklch(0.84 0.07 55);
+	--color-section-cream: oklch(0.96 0.02 85);
+	--color-section-dark: oklch(0.14 0.04 360);
+	--color-section-darker: oklch(0.1 0.04 360);
+
+	/* Typography */
+	--font-display: 'Squanova', 'Metropolis', sans-serif;
+	--font-sans: 'Metropolis', system-ui, sans-serif;
+
+	/* Radius */
+	--radius-sm: 0.25rem;
+	--radius-md: 0.5rem;
+	--radius-lg: 1rem;
+	--radius-xl: 1.25rem;
+}
+
+@utility container {
+	max-width: 87.5rem;
+	margin-inline: auto;
+	padding-inline: 1.5rem;
+}
+
+@layer base {
+	html {
+		scroll-behavior: smooth;
+	}
+	@media (prefers-reduced-motion: reduce) {
+		html {
+			scroll-behavior: auto;
+		}
+	}
+	body {
+		@apply bg-background font-sans text-foreground antialiased;
+	}
+}

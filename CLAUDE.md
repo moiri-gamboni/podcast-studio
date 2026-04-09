@@ -4,7 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-Podcast Studio — a SvelteKit app deploying to Cloudflare Workers. Freshly scaffolded, no application logic yet.
+Podcast Studio — a SvelteKit app deploying to Cloudflare Workers.
+
+**`ref/`** (gitignored): reference materials including market research, artistic direction assets (font sources, brand colors, photos), and architecture plans. Not part of the build.
 
 ## Commands
 
@@ -30,6 +32,7 @@ SvelteKit 2 + Svelte 5 (runes forced) · TypeScript (strict) · Tailwind CSS v4 
 **Deployment:** Cloudflare Workers. `wrangler.jsonc` configures the worker; `svelte.config.js` sets the adapter. Server-side code has access to Cloudflare bindings via the `Platform` interface in `app.d.ts` (`env: Env`, `ctx: ExecutionContext`, `caches`, `cf`).
 
 **Vitest dual projects** (in `vite.config.ts`):
+
 - **"client"** — browser-based component tests via `@vitest/browser-playwright` (headless Chromium). Matches `*.svelte.{test,spec}.{js,ts}`. Excludes `src/lib/server/**`.
 - **"server"** — Node environment. Matches `*.{test,spec}.{js,ts}` excluding the Svelte patterns.
 
