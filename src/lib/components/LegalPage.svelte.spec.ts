@@ -35,8 +35,9 @@ describe('LegalPage', () => {
 	});
 });
 
-function createTextSnippet(text: string) {
-	return ((anchor: Element) => {
+function createTextSnippet(text: string): import('svelte').Snippet {
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	return ((anchor: any) => {
 		const el = document.createElement('p');
 		el.textContent = text;
 		anchor.before(el);

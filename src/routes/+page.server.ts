@@ -1,5 +1,4 @@
 import { fail } from '@sveltejs/kit';
-import { RESEND_API_KEY } from '$env/static/private';
 import type { Actions } from './$types';
 
 function esc(s: string): string {
@@ -11,7 +10,7 @@ function esc(s: string): string {
 }
 
 export const actions = {
-	default: async ({ request }: { request: Request }) => {
+	default: async ({ request, platform }) => {
 		const data = await request.formData();
 		const nom = data.get('nom')?.toString().trim() ?? '';
 		const email = data.get('email')?.toString().trim() ?? '';
@@ -41,10 +40,15 @@ export const actions = {
 			return fail(400, { errors, values: { nom, email, telephone, sujet, message } });
 		}
 
+		const apiKey = platform?.env?.RESEND_API_KEY;
+		if (!apiKey) {
+			return fail(500, { errors: { server: 'Configuration email manquante.' } });
+		}
+
 		const res = await fetch('https://api.resend.com/emails', {
 			method: 'POST',
 			headers: {
-				Authorization: 'Bearer ' + RESEND_API_KEY,
+				Authorization: 'Bearer ' + apiKey,
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify({

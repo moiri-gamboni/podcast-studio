@@ -1,7 +1,5 @@
 import { describe, expect, test, vi, beforeEach } from 'vitest';
 
-vi.mock('$env/static/private', () => ({ RESEND_API_KEY: 'test-key' }));
-
 function makeRequest(data: Record<string, string>): Request {
 	const formData = new FormData();
 	for (const [key, value] of Object.entries(data)) {
@@ -9,6 +7,10 @@ function makeRequest(data: Record<string, string>): Request {
 	}
 	return new Request('http://localhost', { method: 'POST', body: formData });
 }
+
+const mockPlatform = {
+	env: { RESEND_API_KEY: 'test-key' }
+};
 
 const validData = {
 	nom: 'Jean Dupont',
@@ -28,7 +30,10 @@ describe('+page.server actions', () => {
 
 	test('returns errors for empty required fields', async () => {
 		const { actions } = await import('./+page.server');
-		const result: AnyResult = await actions.default({ request: makeRequest({}) } as never);
+		const result: AnyResult = await actions.default({
+			request: makeRequest({}),
+			platform: mockPlatform
+		} as never);
 
 		expect(result?.status).toBe(400);
 		expect(result?.data.errors.nom).toBeDefined();
@@ -39,7 +44,8 @@ describe('+page.server actions', () => {
 	test('validates email format', async () => {
 		const { actions } = await import('./+page.server');
 		const result: AnyResult = await actions.default({
-			request: makeRequest({ ...validData, email: 'not-an-email' })
+			request: makeRequest({ ...validData, email: 'not-an-email' }),
+			platform: mockPlatform
 		} as never);
 
 		expect(result?.status).toBe(400);
@@ -50,7 +56,8 @@ describe('+page.server actions', () => {
 		const { actions } = await import('./+page.server');
 		const { rgpd: _, ...noRgpd } = validData;
 		const result: AnyResult = await actions.default({
-			request: makeRequest(noRgpd)
+			request: makeRequest(noRgpd),
+			platform: mockPlatform
 		} as never);
 
 		expect(result?.status).toBe(400);
@@ -60,7 +67,8 @@ describe('+page.server actions', () => {
 	test('returns success on valid input', async () => {
 		const { actions } = await import('./+page.server');
 		const result = await actions.default({
-			request: makeRequest(validData)
+			request: makeRequest(validData),
+			platform: mockPlatform
 		} as never);
 
 		expect(result).toEqual({ success: true });
@@ -75,7 +83,8 @@ describe('+page.server actions', () => {
 
 		const { actions } = await import('./+page.server');
 		const result: AnyResult = await actions.default({
-			request: makeRequest(validData)
+			request: makeRequest(validData),
+			platform: mockPlatform
 		} as never);
 
 		expect(result?.status).toBe(500);
