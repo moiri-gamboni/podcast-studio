@@ -7,7 +7,8 @@
 	<h2>Éditeur du site</h2>
 	<p>
 		{brand.name}<br />
-		{brand.address}, {brand.postalCode} {brand.city}<br />
+		{brand.address}, {brand.postalCode}
+		{brand.city}<br />
 		SIRET : {brand.siret}<br />
 		RCS : {brand.rcs}<br />
 		Capital social : {brand.capitalSocial}<br />

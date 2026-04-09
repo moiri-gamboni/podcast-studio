@@ -4,12 +4,15 @@
 	let { heroStats }: { heroStats: HeroStat[] } = $props();
 </script>
 
-<section class="relative flex min-h-svh flex-col justify-center bg-section-darker" aria-label="Accueil">
+<section
+	class="relative flex min-h-svh flex-col justify-center bg-section-darker"
+	aria-label="Accueil"
+>
 	<!-- Gradient overlays for text legibility -->
 	<div class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/40"></div>
 	<div class="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-transparent"></div>
 
-	<div class="container relative z-10">
+	<div class="relative z-10 container">
 		<div class="max-w-2xl text-center md:text-left">
 			<span
 				class="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-sm text-foreground backdrop-blur-sm"
@@ -23,13 +26,13 @@
 				Studio disponible
 			</span>
 
-			<h1 class="mt-6 font-display text-5xl font-bold leading-tight text-foreground md:text-7xl">
+			<h1 class="mt-6 font-display text-5xl leading-tight font-bold text-foreground md:text-7xl">
 				Votre espace de création
 			</h1>
 
 			<p class="mt-6 text-lg text-muted-foreground md:text-xl">
-				Un studio podcast professionnel, pensé pour les créateurs qui veulent un son impeccable
-				sans compromis.
+				Un studio podcast professionnel, pensé pour les créateurs qui veulent un son impeccable sans
+				compromis.
 			</p>
 
 			<div class="mt-8 flex flex-col items-center gap-4 sm:flex-row md:items-start">

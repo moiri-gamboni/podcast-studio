@@ -10,9 +10,9 @@ describe('LegalPage', () => {
 			lastUpdated: '1er janvier 2025'
 		});
 
-		await expect.element(page.getByRole('heading', { level: 1 })).toHaveTextContent(
-			'Mentions légales'
-		);
+		await expect
+			.element(page.getByRole('heading', { level: 1 }))
+			.toHaveTextContent('Mentions légales');
 	});
 
 	test('renders lastUpdated date text', async () => {

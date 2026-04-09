@@ -1,10 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import {
-	heroStats,
-	processSteps,
-	pricingTiers,
-	faqItems
-} from './homepage';
+import { heroStats, processSteps, pricingTiers, faqItems } from './homepage';
 
 describe('homepage data', () => {
 	describe('heroStats', () => {

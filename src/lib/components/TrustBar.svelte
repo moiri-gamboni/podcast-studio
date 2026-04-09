@@ -23,11 +23,8 @@
 		</div>
 
 		<!-- Client logo marquee -->
-		<div
-			class="group relative w-full overflow-hidden md:w-2/3"
-			aria-label="Logos de nos clients"
-		>
-			<div class="flex animate-marquee group-hover:pause group-focus-within:pause">
+		<div class="group relative w-full overflow-hidden md:w-2/3" aria-label="Logos de nos clients">
+			<div class="animate-marquee group-hover:pause group-focus-within:pause flex">
 				{#each Array(2) as _}
 					<div class="flex shrink-0 items-center gap-12 px-6">
 						{#each Array(6) as _, i}

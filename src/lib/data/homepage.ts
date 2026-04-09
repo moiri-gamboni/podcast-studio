@@ -96,7 +96,7 @@ export const faqItems: FaqItem[] = [
 			'Nos studios sont équipés de micros professionnels, casques de monitoring, interface audio et logiciel de capture. Tout est prêt à votre arrivée.'
 	},
 	{
-		question: "Combien de personnes peuvent enregistrer en même temps ?",
+		question: 'Combien de personnes peuvent enregistrer en même temps ?',
 		answer:
 			"Nos studios accueillent jusqu'à 4 personnes simultanément, avec un micro et un casque par participant."
 	},

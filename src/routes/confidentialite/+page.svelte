@@ -7,7 +7,8 @@
 	<h2>Responsable du traitement</h2>
 	<p>
 		Le responsable du traitement des données personnelles est {brand.name}, {brand.address},
-		{brand.postalCode} {brand.city}.
+		{brand.postalCode}
+		{brand.city}.
 	</p>
 
 	<h2>Données collectées</h2>
@@ -42,8 +43,8 @@
 	<h2>Vos droits</h2>
 	<p>
 		Conformément au RGPD, vous disposez d'un droit d'accès, de rectification, de suppression, de
-		limitation du traitement, de portabilité et d'opposition. Pour exercer ces droits, contactez-nous
-		à {brand.email}.
+		limitation du traitement, de portabilité et d'opposition. Pour exercer ces droits,
+		contactez-nous à {brand.email}.
 	</p>
 
 	<h2>Cookies</h2>
@@ -54,7 +55,7 @@
 
 	<h2>Contact DPO</h2>
 	<p>
-		Pour toute question relative à la protection de vos données, vous pouvez contacter notre
-		délégué à la protection des données à l'adresse suivante : {brand.email}.
+		Pour toute question relative à la protection de vos données, vous pouvez contacter notre délégué
+		à la protection des données à l'adresse suivante : {brand.email}.
 	</p>
 </LegalPage>

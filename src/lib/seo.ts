@@ -25,12 +25,7 @@ export function localBusinessJsonLd(url: string) {
 	} as const;
 }
 
-export function ogMeta(opts: {
-	title: string;
-	description: string;
-	url: string;
-	image?: string;
-}) {
+export function ogMeta(opts: { title: string; description: string; url: string; image?: string }) {
 	const tags: { property: string; content: string }[] = [
 		{ property: 'og:title', content: opts.title },
 		{ property: 'og:description', content: opts.description },
