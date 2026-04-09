@@ -29,7 +29,13 @@ SvelteKit 2 + Svelte 5 (runes forced) · TypeScript (strict) · Tailwind CSS v4 
 
 ## Architecture
 
-**Deployment:** Cloudflare Workers. `wrangler.jsonc` configures the worker; `svelte.config.js` sets the adapter. Server-side code has access to Cloudflare bindings via the `Platform` interface in `app.d.ts` (`env: Env`, `ctx: ExecutionContext`, `caches`, `cf`).
+**Deployment:** Cloudflare Workers. `wrangler.jsonc` configures the worker; `svelte.config.js` sets the adapter. Server-side code has access to Cloudflare bindings via the `Platform` interface in `app.d.ts` (`env: Env`, `ctx: ExecutionContext`, `caches`, `cf`). Resend API key via `$env/static/private`.
+
+**Design system:** Tailwind v4 `@theme` block in `layout.css` with oklch color tokens. Fonts: Metropolis (sans) and Squanova (display) as WOFF2 in `static/fonts/`. Brand config with `«guillemet»` placeholders in `src/lib/config.ts`.
+
+**Content data:** Homepage section content in `src/lib/data/homepage.ts` with exported types (`FaqItem`, `PricingTier`, `ProcessStep`, `HeroStat`). Components accept data as typed props.
+
+**SEO:** `src/lib/seo.ts` provides `localBusinessJsonLd()`, `ogMeta()`, `pageTitle()`. JSON-LD and OG meta wired in `+layout.svelte`. Legal pages prerendered.
 
 **Vitest dual projects** (in `vite.config.ts`):
 
