@@ -3,10 +3,22 @@
 	import favicon from '$lib/assets/favicon.svg';
 	import Header from '$lib/components/Header.svelte';
 	import Footer from '$lib/components/Footer.svelte';
+	import { localBusinessJsonLd, ogMeta, pageTitle } from '$lib/seo';
+	import type { LayoutProps } from './$types';
 
-	let { children } = $props();
+	let { children, data }: LayoutProps = $props();
 	let scrolled = $state(false);
 	let sentinel: HTMLDivElement;
+
+	const description = 'Studio de podcast professionnel. Réservez votre session.';
+	let jsonLd = $derived(localBusinessJsonLd(data.url));
+	let og = $derived(
+		ogMeta({
+			title: pageTitle(),
+			description,
+			url: data.url
+		})
+	);
 
 	$effect(() => {
 		const observer = new IntersectionObserver(
@@ -20,7 +32,16 @@
 	});
 </script>
 
-<svelte:head><link rel="icon" href={favicon} /></svelte:head>
+<svelte:head>
+	<link rel="icon" href={favicon} />
+	<title>{pageTitle()}</title>
+	<meta name="description" content={description} />
+	<link rel="canonical" href={data.url} />
+	{#each og as tag}
+		<meta property={tag.property} content={tag.content} />
+	{/each}
+	{@html '<script type="application/ld+json">' + JSON.stringify(jsonLd) + '</script>'}
+</svelte:head>
 
 <Header {scrolled} />
 
