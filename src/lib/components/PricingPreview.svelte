@@ -33,7 +33,7 @@
 				<h3 class="text-xl font-bold text-card-foreground">{tier.name}</h3>
 
 				<p class="mt-4">
-					<span class="text-4xl font-bold text-card-foreground">{tier.price}€</span>
+					<span class="text-4xl font-bold text-card-foreground">{tier.price} €</span>
 					<span class="text-muted-foreground">{tier.unit}</span>
 				</p>
 
