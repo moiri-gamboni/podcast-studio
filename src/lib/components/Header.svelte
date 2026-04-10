@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { base } from '$app/paths';
 	import { brand, nav } from '$lib/config';
 	import MobileMenu from './MobileMenu.svelte';
 
@@ -18,12 +19,14 @@
 		{scrolled ? 'border-b border-border/50 bg-background/80 backdrop-blur-xl' : 'bg-transparent'}"
 >
 	<div class="container flex h-full items-center justify-between">
-		<a href="/" class="font-display text-xl font-bold tracking-wide text-foreground uppercase">
+		<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -- home link uses base path -->
+		<a href="{base}/" class="font-display text-xl font-bold tracking-wide text-foreground uppercase">
 			{brand.name}
 		</a>
 
 		<nav aria-label="Navigation principale" class="hidden items-center gap-8 lg:flex">
-			{#each nav as item}
+			{#each nav as item (item.href)}
+				<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -- anchor link -->
 				<a href={item.href} class="text-sm text-foreground/80 transition-colors hover:text-primary">
 					{item.label}
 				</a>
@@ -33,6 +36,7 @@
 		<div class="flex items-center gap-4">
 			<a
 				href={brand.bookingUrl}
+				rel="external"
 				class="hidden rounded-full bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 lg:block"
 			>
 				R&eacute;server
@@ -58,4 +62,4 @@
 	</div>
 </header>
 
-<MobileMenu open={menuOpen} />
+<MobileMenu open={menuOpen} onclose={() => (menuOpen = false)} />

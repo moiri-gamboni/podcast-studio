@@ -16,7 +16,7 @@
 
 <Section id="tarifs" label="Tarifs" title="Nos formules" bg="blush">
 	<div class="mt-12 grid gap-8 md:grid-cols-3">
-		{#each tiers as tier}
+		{#each tiers as tier (tier.name)}
 			<div
 				class="relative flex flex-col rounded-xl bg-card p-8 shadow-lg
 					{tier.highlighted ? 'ring-2 ring-primary' : ''}"
@@ -33,12 +33,12 @@
 				<h3 class="text-xl font-bold text-card-foreground">{tier.name}</h3>
 
 				<p class="mt-4">
-					<span class="text-4xl font-bold text-card-foreground">{tier.price}€</span>
+					<span class="text-4xl font-bold text-card-foreground">{tier.price} €</span>
 					<span class="text-muted-foreground">{tier.unit}</span>
 				</p>
 
 				<ul class="mt-6 flex-1 space-y-3">
-					{#each tier.features as feature}
+					{#each tier.features as feature, i (i)}
 						<li class="flex items-center gap-2 text-card-foreground">
 							<svg
 								class="h-5 w-5 shrink-0 text-primary"
@@ -56,6 +56,7 @@
 
 				<a
 					href={brand.bookingUrl}
+					rel="external"
 					class="mt-8 block rounded-lg bg-primary px-6 py-3 text-center font-semibold
 						text-primary-foreground transition-colors hover:bg-primary/90"
 				>
