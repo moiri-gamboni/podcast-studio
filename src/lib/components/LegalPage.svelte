@@ -12,7 +12,7 @@
 	} = $props();
 </script>
 
-<div class="bg-section-blush py-20 text-secondary-foreground md:py-32">
+<div class="bg-crimson-50 py-20 text-neutral-950 md:py-32">
 	<div class="container mx-auto max-w-3xl">
 		<h1 class="text-3xl font-bold md:text-5xl">{title}</h1>
 		<p class="mt-2 text-sm text-muted-foreground">Dernière mise à jour : {lastUpdated}</p>

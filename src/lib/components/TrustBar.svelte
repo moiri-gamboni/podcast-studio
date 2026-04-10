@@ -6,7 +6,7 @@
 <Section bg="cream">
 	<div class="flex flex-col items-center gap-8 md:flex-row md:justify-between">
 		<!-- Google rating badge -->
-		<div class="flex items-center gap-3 text-secondary-foreground">
+		<div class="flex items-center gap-3 text-neutral-950">
 			<span class="font-display text-3xl font-bold">{brand.googleRating}</span>
 			<div class="flex flex-col">
 				<div class="flex gap-0.5 text-amber-500" aria-hidden="true">
@@ -31,7 +31,7 @@
 					<div class="flex shrink-0 items-center gap-12 px-6">
 						{#each Array.from({ length: 6 }, (_v, i) => i) as i (i)}
 							<div
-								class="h-8 w-24 rounded bg-secondary-foreground/10"
+								class="h-8 w-24 rounded bg-neutral-950/10"
 								aria-label="Logo client {i + 1}"
 							></div>
 						{/each}

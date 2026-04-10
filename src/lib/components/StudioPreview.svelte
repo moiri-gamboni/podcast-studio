@@ -23,7 +23,7 @@
 	<div class="mt-6">
 		<button
 			disabled
-			class="cursor-not-allowed rounded-full bg-primary/50 px-8 py-3 font-semibold text-primary-foreground"
+			class="cursor-not-allowed rounded-full bg-crimson-600/50 px-8 py-3 font-semibold text-white"
 		>
 			Voir tous les espaces
 		</button>
