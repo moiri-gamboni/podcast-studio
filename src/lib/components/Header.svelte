@@ -9,7 +9,7 @@
 
 <a
 	href="#main-content"
-	class="fixed top-0 left-4 z-50 -translate-y-full rounded-b-md bg-primary px-4 py-2 text-primary-foreground transition-transform focus:translate-y-0"
+	class="fixed top-0 left-4 z-50 -translate-y-full rounded-b-md bg-crimson-600 px-4 py-2 text-white transition-transform focus:translate-y-0"
 >
 	Aller au contenu
 </a>
@@ -27,7 +27,7 @@
 		<nav aria-label="Navigation principale" class="hidden items-center gap-8 lg:flex">
 			{#each nav as item (item.href)}
 				<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -- anchor link -->
-				<a href={item.href} class="text-sm text-foreground/80 transition-colors hover:text-primary">
+				<a href={item.href} class="text-sm text-foreground/80 transition-colors hover:text-crimson-500">
 					{item.label}
 				</a>
 			{/each}
@@ -37,7 +37,7 @@
 			<a
 				href={brand.bookingUrl}
 				rel="external"
-				class="hidden rounded-full bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 lg:block"
+				class="hidden rounded-full bg-crimson-600 px-5 py-2 text-sm font-semibold text-white transition-opacity hover:opacity-90 lg:block"
 			>
 				R&eacute;server
 			</a>

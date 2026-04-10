@@ -116,8 +116,8 @@
 
 						<button
 							type="submit"
-							class="w-full rounded-lg bg-primary px-6 py-3 font-semibold text-primary-foreground
-								transition-colors hover:bg-primary/90"
+							class="w-full rounded-lg bg-crimson-600 px-6 py-3 font-semibold text-white
+								transition-colors hover:bg-crimson-700"
 						>
 							Envoyer
 						</button>
@@ -135,12 +135,12 @@
 
 			<div>
 				<h3 class="mb-2 text-lg font-semibold">Téléphone</h3>
-				<a href="tel:{brand.phone}" class="text-primary hover:underline">{brand.phone}</a>
+				<a href="tel:{brand.phone}" class="text-crimson-500 hover:underline">{brand.phone}</a>
 			</div>
 
 			<div>
 				<h3 class="mb-2 text-lg font-semibold">Email</h3>
-				<a href="mailto:{brand.email}" class="text-primary hover:underline">{brand.email}</a>
+				<a href="mailto:{brand.email}" class="text-crimson-500 hover:underline">{brand.email}</a>
 			</div>
 
 			<div class="aspect-video rounded-lg bg-muted" aria-label="Carte"></div>
@@ -149,7 +149,7 @@
 				<a
 					href={brand.instagram}
 					aria-label="Instagram"
-					class="text-muted-foreground hover:text-primary"
+					class="text-muted-foreground hover:text-crimson-500"
 				>
 					<svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
 						<path
@@ -160,7 +160,7 @@
 				<a
 					href={brand.linkedin}
 					aria-label="LinkedIn"
-					class="text-muted-foreground hover:text-primary"
+					class="text-muted-foreground hover:text-crimson-500"
 				>
 					<svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
 						<path
@@ -171,7 +171,7 @@
 				<a
 					href={brand.youtube}
 					aria-label="YouTube"
-					class="text-muted-foreground hover:text-primary"
+					class="text-muted-foreground hover:text-crimson-500"
 				>
 					<svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
 						<path

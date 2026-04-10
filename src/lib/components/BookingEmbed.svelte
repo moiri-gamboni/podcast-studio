@@ -31,7 +31,7 @@
 		class="min-h-[600px] w-full border-0"
 	></iframe>
 	<p class="mt-4 text-center text-sm">
-		<a href={src} target="_blank" rel="noopener noreferrer" class="text-primary underline">
+		<a href={src} target="_blank" rel="noopener noreferrer" class="text-crimson-500 underline">
 			Ouvrir dans un nouvel onglet
 		</a>
 	</p>

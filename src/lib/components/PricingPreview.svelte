@@ -18,30 +18,30 @@
 	<div class="mt-12 grid gap-8 md:grid-cols-3">
 		{#each tiers as tier (tier.name)}
 			<div
-				class="relative flex flex-col rounded-xl bg-card p-8 shadow-lg
-					{tier.highlighted ? 'ring-2 ring-primary' : ''}"
+				class="relative flex flex-col rounded-xl bg-neutral-800 p-8 shadow-lg
+					{tier.highlighted ? 'ring-2 ring-crimson-500' : ''}"
 			>
 				{#if tier.highlighted}
 					<span
-						class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-primary px-4 py-1
-							text-xs font-semibold text-primary-foreground"
+						class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-crimson-600 px-4 py-1
+							text-xs font-semibold text-white"
 					>
 						Populaire
 					</span>
 				{/if}
 
-				<h3 class="text-xl font-bold text-card-foreground">{tier.name}</h3>
+				<h3 class="text-xl font-bold text-neutral-50">{tier.name}</h3>
 
 				<p class="mt-4">
-					<span class="text-4xl font-bold text-card-foreground">{tier.price} €</span>
+					<span class="text-4xl font-bold text-neutral-50">{tier.price} €</span>
 					<span class="text-muted-foreground">{tier.unit}</span>
 				</p>
 
 				<ul class="mt-6 flex-1 space-y-3">
 					{#each tier.features as feature, i (i)}
-						<li class="flex items-center gap-2 text-card-foreground">
+						<li class="flex items-center gap-2 text-neutral-50">
 							<svg
-								class="h-5 w-5 shrink-0 text-primary"
+								class="h-5 w-5 shrink-0 text-crimson-500"
 								fill="none"
 								viewBox="0 0 24 24"
 								stroke="currentColor"
@@ -57,8 +57,8 @@
 				<a
 					href={brand.bookingUrl}
 					rel="external"
-					class="mt-8 block rounded-lg bg-primary px-6 py-3 text-center font-semibold
-						text-primary-foreground transition-colors hover:bg-primary/90"
+					class="mt-8 block rounded-lg bg-crimson-600 px-6 py-3 text-center font-semibold
+						text-white transition-colors hover:bg-crimson-700"
 				>
 					{tier.cta}
 				</a>

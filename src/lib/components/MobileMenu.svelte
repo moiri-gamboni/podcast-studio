@@ -16,7 +16,7 @@
 			{#each nav as item (item.href)}
 				<a
 					href={item.href}
-					class="rounded-md px-4 py-3 text-lg text-foreground hover:text-primary"
+					class="rounded-md px-4 py-3 text-lg text-foreground hover:text-crimson-500"
 					onclick={() => onclose?.()}
 				>
 					{item.label}
@@ -26,7 +26,7 @@
 			<a
 				href={brand.bookingUrl}
 				rel="external"
-				class="mt-4 rounded-full bg-primary px-6 py-3 text-center font-semibold text-primary-foreground"
+				class="mt-4 rounded-full bg-crimson-600 px-6 py-3 text-center font-semibold text-white"
 				onclick={() => onclose?.()}
 			>
 				R&eacute;server
