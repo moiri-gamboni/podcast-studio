@@ -3,14 +3,14 @@ import { describe, expect, test } from 'vitest';
 describe('sitemap.xml', () => {
 	test('returns XML content type', async () => {
 		const { GET } = await import('./+server');
-		const response = GET({ url: new URL('https://example.com/sitemap.xml') } as never);
+		const response = await GET({ url: new URL('https://example.com/sitemap.xml') } as never);
 
 		expect(response.headers.get('Content-Type')).toBe('application/xml');
 	});
 
 	test('returns valid XML with urlset root', async () => {
 		const { GET } = await import('./+server');
-		const response = GET({ url: new URL('https://example.com/sitemap.xml') } as never);
+		const response = await GET({ url: new URL('https://example.com/sitemap.xml') } as never);
 		const body = await response.text();
 
 		expect(body).toContain('<?xml version="1.0" encoding="UTF-8"?>');
@@ -20,7 +20,7 @@ describe('sitemap.xml', () => {
 
 	test('includes all 4 site pages with absolute URLs', async () => {
 		const { GET } = await import('./+server');
-		const response = GET({ url: new URL('https://example.com/sitemap.xml') } as never);
+		const response = await GET({ url: new URL('https://example.com/sitemap.xml') } as never);
 		const body = await response.text();
 
 		expect(body).toContain('<loc>https://example.com/</loc>');
@@ -31,7 +31,7 @@ describe('sitemap.xml', () => {
 
 	test('uses origin from request URL', async () => {
 		const { GET } = await import('./+server');
-		const response = GET({
+		const response = await GET({
 			url: new URL('https://custom-domain.fr/sitemap.xml')
 		} as never);
 		const body = await response.text();
@@ -42,7 +42,7 @@ describe('sitemap.xml', () => {
 
 	test('URLs have no trailing slash except homepage', async () => {
 		const { GET } = await import('./+server');
-		const response = GET({ url: new URL('https://example.com/sitemap.xml') } as never);
+		const response = await GET({ url: new URL('https://example.com/sitemap.xml') } as never);
 		const body = await response.text();
 
 		const locs = [...body.matchAll(/<loc>(.*?)<\/loc>/g)].map((m) => m[1]);
