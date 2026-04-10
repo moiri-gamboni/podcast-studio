@@ -12,7 +12,8 @@
 		transition:slide={{ duration: 200 }}
 	>
 		<nav aria-label="Menu mobile" class="container flex flex-col gap-2 py-6">
-			{#each nav as item}
+			<!-- eslint-disable svelte/no-navigation-without-resolve -- anchor links -->
+			{#each nav as item (item.href)}
 				<a
 					href={item.href}
 					class="rounded-md px-4 py-3 text-lg text-foreground hover:text-primary"
@@ -21,8 +22,10 @@
 					{item.label}
 				</a>
 			{/each}
+			<!-- eslint-enable svelte/no-navigation-without-resolve -->
 			<a
 				href={brand.bookingUrl}
+				rel="external"
 				class="mt-4 rounded-full bg-primary px-6 py-3 text-center font-semibold text-primary-foreground"
 				onclick={() => onclose?.()}
 			>
