@@ -50,7 +50,7 @@ export const processSteps: ProcessStep[] = [
 export const pricingTiers: PricingTier[] = [
 	{
 		name: 'Standard',
-		price: '-- €',
+		price: '--',
 		unit: '/h',
 		features: [
 			'Accès studio équipé',
@@ -62,7 +62,7 @@ export const pricingTiers: PricingTier[] = [
 	},
 	{
 		name: 'Pro',
-		price: '-- €',
+		price: '--',
 		unit: '/h',
 		features: [
 			'Tout le Standard',
@@ -76,7 +76,7 @@ export const pricingTiers: PricingTier[] = [
 	},
 	{
 		name: 'Journée',
-		price: '-- €',
+		price: '--',
 		unit: '/jour',
 		features: [
 			'Tout le Pro',
