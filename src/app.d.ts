@@ -11,7 +11,13 @@ declare global {
 
 		// interface Error {}
 		// interface Locals {}
-		// interface PageData {}
+		interface PageData {
+			seo?: {
+				title?: string;
+				description?: string;
+				noindex?: boolean;
+			};
+		}
 		// interface PageState {}
 	}
 }

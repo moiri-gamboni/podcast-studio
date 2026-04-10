@@ -3,6 +3,7 @@
 	import favicon from '$lib/assets/favicon.svg';
 	import Header from '$lib/components/Header.svelte';
 	import Footer from '$lib/components/Footer.svelte';
+	import { page } from '$app/state';
 	import { localBusinessJsonLd, ogMeta, pageTitle } from '$lib/seo';
 	import type { LayoutProps } from './$types';
 
@@ -10,11 +11,14 @@
 	let scrolled = $state(false);
 	let sentinel: HTMLDivElement;
 
-	const description = 'Studio de podcast professionnel. Réservez votre session.';
+	const defaultDescription = 'Studio de podcast professionnel. Réservez votre session.';
+	let seo = $derived(page.data.seo);
+	let title = $derived(pageTitle(seo?.title));
+	let description = $derived(seo?.description ?? defaultDescription);
 	let jsonLd = $derived(localBusinessJsonLd(data.url));
 	let og = $derived(
 		ogMeta({
-			title: pageTitle(),
+			title,
 			description,
 			url: data.url
 		})
@@ -34,11 +38,13 @@
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
-	<title>{pageTitle()}</title>
+	<title>{title}</title>
 	<meta name="description" content={description} />
 	<link rel="canonical" href={data.url} />
+	<link rel="alternate" hreflang="fr" href={data.url} />
+	{#if seo?.noindex}<meta name="robots" content="noindex" />{/if}
 	{#each og as tag}
-		<meta property={tag.property} content={tag.content} />
+		<meta {...tag} />
 	{/each}
 	{@html '<script type="application/ld+json">' + JSON.stringify(jsonLd) + '</script>'}
 </svelte:head>
