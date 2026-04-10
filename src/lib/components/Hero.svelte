@@ -5,7 +5,7 @@
 </script>
 
 <section
-	class="relative flex min-h-svh flex-col justify-center bg-section-darker"
+	class="relative flex min-h-svh flex-col justify-center bg-neutral-950"
 	aria-label="Accueil"
 >
 	<!-- Gradient overlays for text legibility -->
@@ -38,7 +38,7 @@
 			<div class="mt-8 flex flex-col items-center gap-4 sm:flex-row md:items-start">
 				<a
 					href="#tarifs"
-					class="rounded-full bg-primary px-8 py-3 font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+					class="rounded-full bg-crimson-600 px-8 py-3 font-semibold text-white transition-colors hover:bg-crimson-700"
 				>
 					Réserver une session
 				</a>
