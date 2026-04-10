@@ -29,6 +29,9 @@ test-results
 # Reference materials (research, artistic direction, plans)
 /ref/
 
+# Local task tracking
+TODO.md
+
 # Rodney (headless Chrome)
 /.rodney/
 /screenshots/

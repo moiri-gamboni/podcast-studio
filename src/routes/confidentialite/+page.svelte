@@ -67,16 +67,20 @@
 
 	<h2>Sous-traitants et tiers</h2>
 	<p>
-		Vos données peuvent être transmises aux prestataires suivants, dans le strict cadre des
-		finalités décrites :
+		Les prestataires suivants peuvent être amenés à traiter des données dans le cadre du
+		fonctionnement du site :
 	</p>
 	<ul>
 		<li>
-			<strong>Cloudflare, Inc.</strong> (hébergement du site) : les données transitent par l'infrastructure
-			Cloudflare. Cloudflare adhère au EU-US Data Privacy Framework.
+			<strong>Cloudflare, Inc.</strong> (hébergement et mesure d'audience) : les requêtes
+			transitent par l'infrastructure Cloudflare, qui reçoit les adresses IP des visiteurs
+			dans le cadre normal du protocole HTTP. Cloudflare adhère au EU-US Data Privacy
+			Framework.
 		</li>
 	</ul>
-	<p>Aucune donnée personnelle n'est vendue, louée ou cédée à des tiers à des fins commerciales.</p>
+	<p>
+		Aucune donnée personnelle n'est vendue, louée ou cédée à des tiers à des fins commerciales.
+	</p>
 
 	<h2>Transferts hors Union européenne</h2>
 	<p>
@@ -87,14 +91,23 @@
 
 	<h2>Cookies et mesure d'audience</h2>
 	<p>
-		Ce site utilise <strong>Cloudflare Web Analytics</strong>, un service de mesure d'audience qui
-		fonctionne sans cookies et sans collecte de données personnelles. Les mesures sont entièrement
-		anonymes et agrégées. Aucun identifiant unique n'est attribué aux visiteurs et aucun suivi
-		inter-sites n'est effectué.
+		Ce site ne dépose aucun cookie (ni de suivi, ni publicitaire, ni de fonctionnement). Aucun
+		bandeau de consentement n'est nécessaire.
 	</p>
 	<p>
-		En dehors de ce service, ce site ne dépose aucun cookie, ni de suivi, ni publicitaire, ni de
-		fonctionnement. Aucun bandeau de consentement n'est nécessaire.
+		Ce site utilise <strong>Cloudflare Web Analytics</strong>, un service de mesure d'audience
+		fourni par Cloudflare, Inc. Ce service fonctionne sans cookies, sans identifiant unique et
+		sans suivi inter-sites. Les statistiques produites sont agrégées et ne permettent pas
+		d'identifier un visiteur individuel.
+	</p>
+	<p>
+		Dans le cadre de ce service, les adresses IP des visiteurs sont reçues par Cloudflare lors
+		des requêtes HTTP, puis supprimées sans être stockées. Ce traitement transitoire repose sur
+		notre intérêt légitime (article 6.1.f du RGPD) à mesurer la fréquentation du site de
+		manière proportionnée.
+	</p>
+	<p>
+		Vous pouvez vous opposer à cette mesure d'audience en contactant {brand.email}.
 	</p>
 
 	<h2>Sécurité</h2>
