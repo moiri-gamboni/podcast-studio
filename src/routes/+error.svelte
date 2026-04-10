@@ -1,6 +1,12 @@
 <script lang="ts">
 	import { page } from '$app/state';
+	import { pageTitle } from '$lib/seo';
 </script>
+
+<svelte:head>
+	<title>{pageTitle(`Erreur ${page.status}`)}</title>
+	<meta name="robots" content="noindex" />
+</svelte:head>
 
 <div class="flex min-h-[60vh] flex-col items-center justify-center text-center">
 	<h1 class="text-6xl font-bold text-primary">{page.status}</h1>
