@@ -40,8 +40,8 @@ describe('Section', () => {
 		});
 
 		const section = container.querySelector('section');
-		expect(section?.className).toContain('bg-section-blush');
-		expect(section?.className).toContain('text-secondary-foreground');
+		expect(section?.className).toContain('bg-crimson-50');
+		expect(section?.className).toContain('text-neutral-950');
 	});
 
 	test('applies light text on dark backgrounds', async () => {
@@ -51,7 +51,7 @@ describe('Section', () => {
 		});
 
 		const section = container.querySelector('section');
-		expect(section?.className).toContain('bg-section-dark');
+		expect(section?.className).toContain('bg-background');
 		expect(section?.className).toContain('text-foreground');
 	});
 
