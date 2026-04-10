@@ -35,7 +35,7 @@ SvelteKit 2 + Svelte 5 (runes forced) · TypeScript (strict) · Tailwind CSS v4 
 
 **Content data:** Homepage section content in `src/lib/data/homepage.ts` with exported types (`FaqItem`, `PricingTier`, `ProcessStep`, `HeroStat`). Components accept data as typed props.
 
-**SEO:** `src/lib/seo.ts` provides `localBusinessJsonLd()`, `ogMeta()`, `pageTitle()`. JSON-LD and OG meta wired in `+layout.svelte`. Legal pages prerendered.
+**SEO:** `src/lib/seo.ts` exports `localBusinessJsonLd()`, `ogMeta()`, `pageTitle()`, `breadcrumbJsonLd()`, and the `MetaTag` type. `ogMeta()` returns both OG and Twitter Card tags as `MetaTag[]`; the layout renders them with `<meta {...tag} />`. Per-page metadata flows via `page.data.seo` (`App.PageData.seo` in `app.d.ts`); each page's `+page.ts` can return `{ seo: { title?, description?, noindex? } }` and the layout falls back to defaults. Dynamic `sitemap.xml` and `robots.txt` routes use `url.origin` for absolute URLs. Legal pages prerendered with `noindex`.
 
 **Vitest dual projects** (in `vite.config.ts`):
 

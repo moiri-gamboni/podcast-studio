@@ -1,0 +1,8 @@
+{
+	"name": "Podcast Studio",
+	"short_name": "Studio",
+	"display": "standalone",
+	"theme_color": "#150308",
+	"background_color": "#ffffff",
+	"icons": []
+}

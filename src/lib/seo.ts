@@ -1,9 +1,12 @@
 import { brand } from '$lib/config';
 
-export function localBusinessJsonLd(url: string) {
+export type MetaTag = { property?: string; name?: string; content: string };
+
+export function localBusinessJsonLd(url: string, image?: string) {
 	return {
 		'@context': 'https://schema.org',
 		'@type': 'LocalBusiness',
+		'@id': url + '#business',
 		name: brand.name,
 		url,
 		telephone: brand.phone,
@@ -21,12 +24,20 @@ export function localBusinessJsonLd(url: string) {
 			longitude: brand.longitude
 		},
 		openingHours: brand.openingHours,
-		priceRange: brand.priceRange
+		priceRange: brand.priceRange,
+		sameAs: [brand.instagram, brand.linkedin, brand.youtube],
+		aggregateRating: {
+			'@type': 'AggregateRating',
+			ratingValue: brand.googleRating,
+			reviewCount: brand.googleReviewCount,
+			bestRating: '5'
+		},
+		...(image ? { image } : {})
 	} as const;
 }
 
 export function ogMeta(opts: { title: string; description: string; url: string; image?: string }) {
-	const tags: { property: string; content: string }[] = [
+	const tags: MetaTag[] = [
 		{ property: 'og:title', content: opts.title },
 		{ property: 'og:description', content: opts.description },
 		{ property: 'og:url', content: opts.url },
@@ -37,7 +48,28 @@ export function ogMeta(opts: { title: string; description: string; url: string; 
 	if (opts.image) {
 		tags.push({ property: 'og:image', content: opts.image });
 	}
+	tags.push(
+		{ name: 'twitter:card', content: 'summary_large_image' },
+		{ name: 'twitter:title', content: opts.title },
+		{ name: 'twitter:description', content: opts.description }
+	);
+	if (opts.image) {
+		tags.push({ name: 'twitter:image', content: opts.image });
+	}
 	return tags;
+}
+
+export function breadcrumbJsonLd(items: { name: string; url: string }[]) {
+	return {
+		'@context': 'https://schema.org',
+		'@type': 'BreadcrumbList',
+		itemListElement: items.map((item, i) => ({
+			'@type': 'ListItem',
+			position: i + 1,
+			name: item.name,
+			item: item.url
+		}))
+	};
 }
 
 export function pageTitle(title?: string) {
