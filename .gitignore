@@ -29,5 +29,6 @@ test-results
 # Reference materials (research, artistic direction, plans)
 /ref/
 
-# Screenshots (rodney)
+# Rodney (headless Chrome)
+/.rodney/
 /screenshots/
