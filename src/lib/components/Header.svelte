@@ -58,4 +58,4 @@
 	</div>
 </header>
 
-<MobileMenu open={menuOpen} />
+<MobileMenu open={menuOpen} onclose={() => (menuOpen = false)} />
