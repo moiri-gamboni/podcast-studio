@@ -72,15 +72,12 @@
 	</p>
 	<ul>
 		<li>
-			<strong>Cloudflare, Inc.</strong> (hébergement et mesure d'audience) : les requêtes
-			transitent par l'infrastructure Cloudflare, qui reçoit les adresses IP des visiteurs
-			dans le cadre normal du protocole HTTP. Cloudflare adhère au EU-US Data Privacy
-			Framework.
+			<strong>Cloudflare, Inc.</strong> (hébergement et mesure d'audience) : les requêtes transitent par
+			l'infrastructure Cloudflare, qui reçoit les adresses IP des visiteurs dans le cadre normal du protocole
+			HTTP. Cloudflare adhère au EU-US Data Privacy Framework.
 		</li>
 	</ul>
-	<p>
-		Aucune donnée personnelle n'est vendue, louée ou cédée à des tiers à des fins commerciales.
-	</p>
+	<p>Aucune donnée personnelle n'est vendue, louée ou cédée à des tiers à des fins commerciales.</p>
 
 	<h2>Transferts hors Union européenne</h2>
 	<p>
@@ -96,15 +93,15 @@
 	</p>
 	<p>
 		Ce site utilise <strong>Cloudflare Web Analytics</strong>, un service de mesure d'audience
-		fourni par Cloudflare, Inc. Ce service fonctionne sans cookies, sans identifiant unique et
-		sans suivi inter-sites. Les statistiques produites sont agrégées et ne permettent pas
-		d'identifier un visiteur individuel.
+		fourni par Cloudflare, Inc. Ce service fonctionne sans cookies, sans identifiant unique et sans
+		suivi inter-sites. Les statistiques produites sont agrégées et ne permettent pas d'identifier un
+		visiteur individuel.
 	</p>
 	<p>
-		Dans le cadre de ce service, les adresses IP des visiteurs sont reçues par Cloudflare lors
-		des requêtes HTTP, puis supprimées sans être stockées. Ce traitement transitoire repose sur
-		notre intérêt légitime (article 6.1.f du RGPD) à mesurer la fréquentation du site de
-		manière proportionnée.
+		Dans le cadre de ce service, les adresses IP des visiteurs sont reçues par Cloudflare lors des
+		requêtes HTTP, puis supprimées sans être stockées. Ce traitement transitoire repose sur notre
+		intérêt légitime (article 6.1.f du RGPD) à mesurer la fréquentation du site de manière
+		proportionnée.
 	</p>
 	<p>
 		Vous pouvez vous opposer à cette mesure d'audience en contactant {brand.email}.

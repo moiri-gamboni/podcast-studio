@@ -20,14 +20,20 @@
 >
 	<div class="container flex h-full items-center justify-between">
 		<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -- home link uses base path -->
-		<a href="{base}/" class="font-display text-xl font-bold tracking-wide text-foreground uppercase">
+		<a
+			href="{base}/"
+			class="font-display text-xl font-bold tracking-wide text-foreground uppercase"
+		>
 			{brand.name}
 		</a>
 
 		<nav aria-label="Navigation principale" class="hidden items-center gap-8 lg:flex">
 			{#each nav as item (item.href)}
 				<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -- anchor link -->
-				<a href={item.href} class="text-sm text-foreground/80 transition-colors hover:text-crimson-500">
+				<a
+					href={item.href}
+					class="text-sm text-foreground/80 transition-colors hover:text-crimson-500"
+				>
 					{item.label}
 				</a>
 			{/each}

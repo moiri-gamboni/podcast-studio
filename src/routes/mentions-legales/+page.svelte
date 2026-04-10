@@ -37,10 +37,10 @@
 
 	<h2>Mesure d'audience</h2>
 	<p>
-		Ce site utilise Cloudflare Web Analytics, un service de mesure d'audience fourni par
-		Cloudflare, Inc. Ce service fonctionne sans cookies et sans identifiant unique. Les adresses
-		IP sont reçues par Cloudflare lors des requêtes, puis supprimées sans stockage. Pour plus de
-		détails, consultez notre <a href="/confidentialite">politique de confidentialité</a>.
+		Ce site utilise Cloudflare Web Analytics, un service de mesure d'audience fourni par Cloudflare,
+		Inc. Ce service fonctionne sans cookies et sans identifiant unique. Les adresses IP sont reçues
+		par Cloudflare lors des requêtes, puis supprimées sans stockage. Pour plus de détails, consultez
+		notre <a href="/confidentialite">politique de confidentialité</a>.
 	</p>
 
 	<h2>Médiation</h2>
