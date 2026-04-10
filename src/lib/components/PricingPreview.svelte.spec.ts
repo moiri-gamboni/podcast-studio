@@ -9,7 +9,8 @@ const tiers = [
 		price: '49',
 		unit: '/ heure',
 		features: ['Studio solo', 'Micro pro', 'Export WAV'],
-		cta: 'Réserver'
+		cta: 'Réserver',
+		bookingUrl: 'https://shaiman.podyx.com/time-slots?service=abc'
 	},
 	{
 		name: 'Pro',
@@ -17,7 +18,8 @@ const tiers = [
 		unit: '/ heure',
 		features: ['Studio duo', 'Mixage inclus', 'Export multi-piste'],
 		highlighted: true,
-		cta: 'Réserver'
+		cta: 'Réserver',
+		bookingUrl: 'https://shaiman.podyx.com/time-slots?service=def'
 	},
 	{
 		name: 'Premium',
@@ -63,6 +65,17 @@ describe('PricingPreview', () => {
 				await expect.element(page.getByText(feature)).toBeVisible();
 			}
 		}
+	});
+
+	test('uses per-tier booking URLs when provided', async () => {
+		render(PricingPreview, { tiers });
+
+		const links = await page.getByRole('link', { name: 'Réserver' }).all();
+		const hrefs = links.map((l) => l.element().getAttribute('href'));
+		expect(hrefs[0]).toBe('https://shaiman.podyx.com/time-slots?service=abc');
+		expect(hrefs[1]).toBe('https://shaiman.podyx.com/time-slots?service=def');
+		// Third tier has no bookingUrl, falls back to brand.bookingUrl from PUBLIC_PODYX_URL
+		expect(hrefs[2]).toContain('podyx.com');
 	});
 
 	test('shows HT note below cards', async () => {

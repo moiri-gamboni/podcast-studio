@@ -1,15 +1,7 @@
 <script lang="ts">
 	import Section from '$lib/components/Section.svelte';
 	import { brand } from '$lib/config';
-
-	interface PricingTier {
-		name: string;
-		price: string;
-		unit: string;
-		features: string[];
-		highlighted?: boolean;
-		cta: string;
-	}
+	import type { PricingTier } from '$lib/data/homepage';
 
 	let { tiers }: { tiers: PricingTier[] } = $props();
 </script>
@@ -55,7 +47,7 @@
 				</ul>
 
 				<a
-					href={brand.bookingUrl}
+					href={tier.bookingUrl ?? brand.bookingUrl}
 					rel="external"
 					class="mt-8 block rounded-lg bg-crimson-600 px-6 py-3 text-center font-semibold
 						text-white transition-colors hover:bg-crimson-700"

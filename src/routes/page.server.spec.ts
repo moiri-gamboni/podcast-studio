@@ -1,5 +1,10 @@
 import { describe, expect, test, vi, beforeEach } from 'vitest';
 
+vi.mock('$lib/server/brevo', () => ({
+	sendEmail: vi.fn().mockResolvedValue({ ok: true }),
+	buildContactNotificationHtml: vi.fn().mockReturnValue('<p>mock html</p>')
+}));
+
 function makeRequest(data: Record<string, string>): Request {
 	const formData = new FormData();
 	for (const [key, value] of Object.entries(data)) {
@@ -9,7 +14,7 @@ function makeRequest(data: Record<string, string>): Request {
 }
 
 const mockPlatform = {
-	env: { RESEND_API_KEY: 'test-key' }
+	env: { BREVO_API_KEY: 'test-key' }
 };
 
 const validData = {
@@ -23,9 +28,10 @@ const validData = {
 type AnyResult = any;
 
 describe('+page.server actions', () => {
-	beforeEach(() => {
+	beforeEach(async () => {
 		vi.restoreAllMocks();
-		globalThis.fetch = vi.fn().mockResolvedValue(new Response(null, { status: 200 }));
+		const { sendEmail } = vi.mocked(await import('$lib/server/brevo'));
+		sendEmail.mockResolvedValue({ ok: true });
 	});
 
 	test('returns errors for empty required fields', async () => {
@@ -72,19 +78,46 @@ describe('+page.server actions', () => {
 		} as never);
 
 		expect(result).toEqual({ success: true });
-		expect(globalThis.fetch).toHaveBeenCalledWith(
-			'https://api.resend.com/emails',
-			expect.objectContaining({ method: 'POST' })
+	});
+
+	test('calls sendEmail with correct arguments', async () => {
+		const { sendEmail } = vi.mocked(await import('$lib/server/brevo'));
+		const { actions } = await import('./+page.server');
+
+		await actions.default({
+			request: makeRequest({ ...validData, telephone: '0612345678', sujet: 'reservation' }),
+			platform: mockPlatform
+		} as never);
+
+		expect(sendEmail).toHaveBeenCalledWith(
+			'test-key',
+			expect.objectContaining({
+				replyTo: 'jean@example.com',
+				subject: 'Contact: Jean Dupont',
+				htmlContent: '<p>mock html</p>'
+			})
 		);
 	});
 
-	test('returns server error when email send fails', async () => {
-		globalThis.fetch = vi.fn().mockResolvedValue(new Response(null, { status: 500 }));
+	test('returns server error when sendEmail fails', async () => {
+		const { sendEmail } = vi.mocked(await import('$lib/server/brevo'));
+		sendEmail.mockResolvedValue({ ok: false, error: 'Brevo API 400: bad request' });
 
 		const { actions } = await import('./+page.server');
 		const result: AnyResult = await actions.default({
 			request: makeRequest(validData),
 			platform: mockPlatform
+		} as never);
+
+		expect(result?.status).toBe(500);
+		expect(result?.data.errors.server).toBeDefined();
+	});
+
+	test('returns server error when API key is missing', async () => {
+		const { actions } = await import('./+page.server');
+		const result: AnyResult = await actions.default({
+			request: makeRequest(validData),
+			platform: { env: {} }
 		} as never);
 
 		expect(result?.status).toBe(500);

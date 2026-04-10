@@ -1,3 +1,5 @@
+import { PUBLIC_PODYX_URL } from '$env/static/public';
+
 export const brand = {
 	name: '\u00abSTUDIO_NAME\u00bb',
 	tagline: '\u00abTAGLINE\u00bb',
@@ -14,7 +16,7 @@ export const brand = {
 	linkedin: '\u00abLINKEDIN_URL\u00bb',
 	youtube: '\u00abYOUTUBE_URL\u00bb',
 	whatsapp: '\u00abWHATSAPP_NUMBER\u00bb',
-	bookingUrl: '\u00abPODYX_URL\u00bb',
+	bookingUrl: PUBLIC_PODYX_URL,
 	googleMapsEmbed: '\u00abMAPS_EMBED_URL\u00bb',
 	googleRating: '\u00abRATING\u00bb',
 	googleReviewCount: '\u00abREVIEW_COUNT\u00bb',

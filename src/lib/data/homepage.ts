@@ -15,6 +15,7 @@ export interface PricingTier {
 	features: string[];
 	highlighted?: boolean;
 	cta: string;
+	bookingUrl?: string;
 }
 
 export interface FaqItem {
@@ -47,6 +48,9 @@ export const processSteps: ProcessStep[] = [
 	}
 ];
 
+// Podyx deep links: update UUIDs when real services are configured
+const PODYX = 'https://shaiman.podyx.com/time-slots';
+
 export const pricingTiers: PricingTier[] = [
 	{
 		name: 'Standard',
@@ -58,7 +62,8 @@ export const pricingTiers: PricingTier[] = [
 			'Fichiers WAV livrés sous 48h',
 			'Assistance technique sur place'
 		],
-		cta: 'Réserver'
+		cta: 'Réserver',
+		bookingUrl: `${PODYX}?service=43b4e5e4-795e-465e-8b1d-cf8182f66f5f`
 	},
 	{
 		name: 'Pro',

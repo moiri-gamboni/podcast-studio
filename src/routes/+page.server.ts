@@ -1,13 +1,7 @@
 import { fail } from '@sveltejs/kit';
 import type { Actions } from './$types';
-
-function esc(s: string): string {
-	return s
-		.replace(/&/g, '&amp;')
-		.replace(/</g, '&lt;')
-		.replace(/>/g, '&gt;')
-		.replace(/"/g, '&quot;');
-}
+import { sendEmail, buildContactNotificationHtml } from '$lib/server/brevo';
+import { brand } from '$lib/config';
 
 export const actions = {
 	default: async ({ request, platform }) => {
@@ -40,32 +34,22 @@ export const actions = {
 			return fail(400, { errors, values: { nom, email, telephone, sujet, message } });
 		}
 
-		const apiKey = platform?.env?.RESEND_API_KEY;
+		const apiKey = platform?.env?.BREVO_API_KEY;
 		if (!apiKey) {
 			return fail(500, { errors: { server: 'Configuration email manquante.' } });
 		}
 
-		const res = await fetch('https://api.resend.com/emails', {
-			method: 'POST',
-			headers: {
-				Authorization: 'Bearer ' + apiKey,
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({
-				from: 'contact@example.com',
-				to: ['contact@example.com'],
-				replyTo: email,
-				subject: 'Contact: ' + nom,
-				html: `<p><strong>Nom:</strong> ${esc(nom)}</p>
-<p><strong>Email:</strong> ${esc(email)}</p>
-<p><strong>Téléphone:</strong> ${esc(telephone)}</p>
-<p><strong>Sujet:</strong> ${esc(sujet)}</p>
-<p><strong>Message:</strong></p>
-<p>${esc(message)}</p>`
-			})
+		const result = await sendEmail(apiKey, {
+			senderEmail: brand.email,
+			senderName: brand.name,
+			to: brand.email,
+			replyTo: email,
+			subject: 'Contact: ' + nom,
+			htmlContent: buildContactNotificationHtml({ nom, email, telephone, sujet, message })
 		});
 
-		if (!res.ok) {
+		if (!result.ok) {
+			console.error('Brevo send failed:', result.error);
 			return fail(500, { errors: { server: "Erreur lors de l'envoi. Veuillez réessayer." } });
 		}
 
